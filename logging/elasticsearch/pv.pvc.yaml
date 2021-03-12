@@ -9,20 +9,6 @@ parameters:
   type: gp2
   fsType: ext4
 
-#### PV  ######
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: efk-pv
-  labels:
-    type: efk-pv
-  
-spec:
-  storageClassName: gp2
-  persistentVolumeReclaimPolicy: Delete
-  capacity:
-    storage: 10Gi
 #### PVC #####
 ---
 apiVersion: v1
