@@ -17,6 +17,7 @@ metadata:
   name: efk-pv
   labels:
     type: efk-pv
+  namespace: logging
 spec:
   storageClassName: gp2
   persistentVolumeReclaimPolicy: Delete
