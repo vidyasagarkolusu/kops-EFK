@@ -1,0 +1,42 @@
+#####Storage-Class#########
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: do-block-storage
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: gp2
+  fsType: ext4
+
+#### PV  ######
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: efk-pv
+  labels:
+    type: efk-pv
+spec:
+  storageClassName: gp2
+  persistentVolumeReclaimPolicy: Delete
+  capacity:
+    storage: 10Gi
+  accessModes:
+  - ReadWriteOnce
+  awsElasticBlockStore:
+    volumeID: vol-01ec44bb9b73559bc
+    fsType: ext4
+#### PVC #####
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: task-pv-claim1
+spec:
+  storageClassName: do-block-storage
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
