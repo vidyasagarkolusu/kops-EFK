@@ -17,7 +17,7 @@ metadata:
   name: efk-pv
   labels:
     type: efk-pv
-  namespace: logging
+  
 spec:
   storageClassName: gp2
   persistentVolumeReclaimPolicy: Delete
@@ -26,7 +26,6 @@ spec:
   accessModes:
   - ReadWriteOnce
   awsElasticBlockStore:
-    volumeID: vol-01ec44bb9b73559bc
     fsType: ext4
 #### PVC #####
 ---
@@ -34,6 +33,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: elastic-data
+  namespace: logging
 spec:
   storageClassName: do-block-storage
   accessModes:
