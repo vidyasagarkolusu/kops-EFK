@@ -23,10 +23,6 @@ spec:
   persistentVolumeReclaimPolicy: Delete
   capacity:
     storage: 10Gi
-  accessModes:
-  - ReadWriteOnce
-  awsElasticBlockStore:
-    fsType: ext4
 #### PVC #####
 ---
 apiVersion: v1
